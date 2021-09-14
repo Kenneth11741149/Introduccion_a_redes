@@ -4,8 +4,10 @@ import { Link, Redirect, useHistory } from 'react-router-dom'
 import Navibar from './Navibar.js'
 import Paypal from "./PaypalButton"
 import Counter from './Counter.js'
+import Context from '../Context.js';
 
 export default class Precios extends Component {
+    static contextType = Context;
     constructor(props) {
         super(props);
         console.log(props)
@@ -15,11 +17,15 @@ export default class Precios extends Component {
             entrada : "01"
           };
     }
+    getTicketCode() {
+        const data = this.context;
+        return data.state.Ticket_Code;
+    }
 
     render() {
         
         var dat = this;
-
+        var TC = dat.getTicketCode()
         function ContinueButton() {
             alert("El boton pagar ha sido clickeado.")
             var codeIsValid = true;
@@ -38,7 +44,7 @@ export default class Precios extends Component {
         return (
             <div >
                 <Navibar />
-
+                Codigo de Ticket: {TC.toString()}
                 <div className="Page">
                     <div className="PageLayout">
                         <div class="row">

@@ -6,13 +6,16 @@ import {
   Route,
   Link
 } from "react-router-dom";
-
+import React, { Component, useEffect, useContext } from 'react'
 import Home from './Components/Home.js';
 import Precios from './Components/Precios.js';
 import Pago from './Components/Pago.js'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import Context from './Context.js';
+
 
 function App() {
+  const data = useContext(Context);
   return (
     <Router>
         <Switch>
