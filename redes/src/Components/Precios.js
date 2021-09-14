@@ -14,18 +14,23 @@ export default class Precios extends Component {
         //var temp = this.props.state.entrada;
         this.state = {
             redirect: null,
-            entrada : "01"
+            
           };
     }
     getTicketCode() {
         const data = this.context;
         return data.state.Ticket_Code;
     }
+    getEntrada() {
+        const data = this.context;
+        return data.state.entrada
+    }
 
     render() {
         
         var dat = this;
         var TC = dat.getTicketCode()
+        var HE = dat.getEntrada();
         function ContinueButton() {
             alert("El boton pagar ha sido clickeado.")
             var codeIsValid = true;
@@ -83,12 +88,7 @@ export default class Precios extends Component {
                                                 <td>L. 40.00</td>
 
                                             </tr>
-                                            <tr>
-
-                                                <td>Ticket perdido </td>
-                                                <td>L. 200.00 </td>
-
-                                            </tr>
+                                            
                                         </tbody>
                                     </Table>
                                     <hr />
@@ -117,7 +117,7 @@ export default class Precios extends Component {
                                                         <b> Tiempo de Entrada: </b>
                                                     </Form.Label>
                                                     <Col sm="6">
-                                                        <Form.Control plaintext readOnly defaultValue={this.state.entrada} />
+                                                        <Form.Control plaintext readOnly defaultValue={HE} />
                                                     </Col>
                                                 </Form.Group>
                                                 

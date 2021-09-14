@@ -23,7 +23,10 @@ export default class Home extends Component {
     const data = this.context;
     data.setTicket_Code(code);
   }
-
+  setEntrada(code) {
+    const data = this.context;
+    data.setEntrada(code);
+  }
   getTicketCode() {
     const data = this.context;
     return data.state.Ticket_Code;
@@ -52,7 +55,8 @@ export default class Home extends Component {
         if (temp == dat.state.num) {
           current = tickets[i].entrada;
           codeIsValid = true;
-          dat.setTicket_Code(dat.state.num)
+          dat.setTicket_Code(dat.state.num);
+          dat.setEntrada(current);
           break;
         }
       }

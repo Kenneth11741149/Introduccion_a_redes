@@ -6,6 +6,7 @@ const Context = React.createContext();
 class AuthUserProvider extends Component {
     state = {
         Ticket_Code: "2",
+        entrada: "0",
         displayName: null,
         SignUpVisible: false,
         LogInVisible: false,
@@ -13,7 +14,11 @@ class AuthUserProvider extends Component {
     }
     setTicket_Code = (code) =>{
         this.setState({Ticket_Code: code});
-        console.log('Context received code: '+code)
+        
+    }
+    setEntrada = (code) =>{
+        this.setState({entrada: code});
+        
     }
 
     // Example of information stored on context.
@@ -47,6 +52,7 @@ class AuthUserProvider extends Component {
                 ToggleLogInModal: this.ToggleLogInModal, 
                 ToggleChangeModal: this.ToggleChangeModal,
                 setTicket_Code : this.setTicket_Code,
+                setEntrada : this.setEntrada,
                 ModalsToFalse: this.ModalsToFalse
             }}>
                 {this.props.children}

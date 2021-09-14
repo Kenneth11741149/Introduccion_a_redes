@@ -2,8 +2,10 @@ import React, { Component } from 'react'
 import { Navbar, Container, Nav, NavDropdown, Button } from 'react-bootstrap';
 import { Switch, Route, Link } from 'react-router-dom';
 import Paypal from "./PaypalButton"
+import Context from '../Context.js';
 
 export default class Counter extends React.Component {
+    static contextType = Context;
     constructor() {
         super();
         this.state = { time: {}, seconds: 1200, showing: false};
@@ -13,7 +15,7 @@ export default class Counter extends React.Component {
         this.startTimer = this.startTimer.bind(this);
         this.countDown = this.countDown.bind(this);
     }
-
+    
     secondsToTime(secs) {
         let hours = Math.floor(secs / (60 * 60));
 
@@ -42,7 +44,14 @@ export default class Counter extends React.Component {
         }
         this.setState({showing: !this.showing})
         var today = new Date();
+        //this.date = today;
+        console.log(today.getTime())
         this.time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    }
+
+    getEntrada() {
+        const data = this.context;
+        return data.state.entrada
     }
 
     countDown() {
@@ -59,8 +68,23 @@ export default class Counter extends React.Component {
         }
     }
 
+    Pago(HE){
+        var timeStart = new Date("01/01/2007 " + HE).getHours();
+        var timeEnd = new Date("01/01/2007 " + this.time).getHours();
+        
+        var hourDiff = timeEnd - timeStart; 
+        console.log(timeEnd - timeStart)
+        if (hourDiff < 0) {
+            hourDiff = 24.0 + hourDiff;
+         }
+         console.log(hourDiff)
+         return hourDiff;
+    }
+
     render() {
         const { showing } = this.state;
+        var dat = this;
+        var HE = dat.getEntrada();
         return (
             <div>
                 <div className="box">
@@ -81,7 +105,7 @@ export default class Counter extends React.Component {
                         ? <div><b>Tiempo de Salida: </b> &nbsp; &nbsp; 
                         {this.time} &nbsp; &nbsp;
                         <b>Total a Pagar:</b> &nbsp; &nbsp;
-                        0</div>
+                        {this.Pago(HE)}</div>
                         : null
                     }
                     
