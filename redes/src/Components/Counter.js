@@ -11,9 +11,9 @@ export default class Counter extends React.Component {
         this.state = { time: {}, seconds: 1200, showing: false };
         this.time = "";
         this.pago = '';
-        this.today = new Date();
-        this.timeDeEntrada = this.today.getHours() + ":" + this.today.getMinutes() + ":" + this.today.getSeconds();
-
+        this.today = "";
+        this.timeDeEntrada = "";
+        
         this.timer = 0;
         this.startTimer = this.startTimer.bind(this);
         this.countDown = this.countDown.bind(this);
@@ -49,7 +49,9 @@ export default class Counter extends React.Component {
         var today = new Date();
         //this.date = today;
         console.log(today.getTime())
-        this.time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+        this.today = new Date();
+        this.timeDeEntrada = this.today.getHours() + ":" + this.today.getMinutes() + ":" + this.today.getSeconds();
+        this.Pago2();
     }
 
     getEntrada() {
@@ -71,44 +73,7 @@ export default class Counter extends React.Component {
         }
     }
 
-    Pago(HE) {
-
-
-        var timeStart = new Date("01/01/2007 " + HE)
-        //var timeStart = HE
-        var timeEnd = new Date("01/01/2007 " + this.time)
-
-        var diffInMilliseconds = Math.abs(timeStart - timeEnd);
-        console.log(diffInMilliseconds); //86400000
-        var minutes = Math.floor(diffInMilliseconds / 60000)
-        //var minutes = Math.floor(diffInMilliseconds / 60) % 60;
-        //diffInMilliseconds -= minutes * 60;
-        console.log("Minutos: ", minutes);
-
-
-        var hourDiff = minutes;  //timeEnd - timeStart; 
-        console.log(hourDiff >= 240)
-        var pago = ''
-        if (hourDiff < 15) {
-            pago = 'Gratis';
-        } else if (hourDiff >= 15 && hourDiff < 120) {
-            pago = 'Lps. 25.00';
-
-        } else if (hourDiff >= 120 && hourDiff < 240) {
-            pago = 'Lps. 35.00';
-
-        } else if (hourDiff >= 240) {
-            pago = 'Lps. 45.00';
-
-        } else {
-            pago = 'Lps. XX.00';
-        }
-
-        console.log(hourDiff)
-        console.log(pago)
-        this.pago = pago
-        return pago;
-    }
+    
 
 
 
@@ -151,10 +116,16 @@ export default class Counter extends React.Component {
         console.log(hourDiff)
         console.log(pago)
         this.pago = pago
+        
         return pago;
 
 
     }
+
+    /*componentDidMount() {
+        this.today = new Date();
+        this.timeDeEntrada = this.today.getHours() + ":" + this.today.getMinutes() + ":" + this.today.getSeconds();
+      }*/
     render() {
         const { showing } = this.state;
         var dat = this;
@@ -206,7 +177,7 @@ export default class Counter extends React.Component {
                                 </div>
                             </Form.Label>
                             <Col sm="6">
-                                <Form.Control plaintext readOnly value={this.Pago2()} />
+                                <Form.Control plaintext readOnly value={this.pago} />
                             </Col>
                         </Form.Group>
 
@@ -218,10 +189,7 @@ export default class Counter extends React.Component {
 
                     </div>
                 </div>
-                <div className="col-sm-1">
-                    <hr width="1" size="165" />
-
-                </div>
+                
                 <div className="col-sm-5">
                     <div className="box">
 
