@@ -86,8 +86,8 @@ export default class Home extends Component {
         
         <div className="Page">
           <div className="PageLayout">
-            <div class="row">
-              <div class="col-sm-5">
+            <div className="row">
+              <div className="col-sm-5">
 
                 <div className="Content">
                   <Form>
