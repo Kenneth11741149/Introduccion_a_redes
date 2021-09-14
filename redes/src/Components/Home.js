@@ -3,7 +3,7 @@ import React, { Component, useEffect, useState } from 'react';
 import { Navbar, Container, Nav, NavDropdown, Button, Form } from 'react-bootstrap';
 import { Link, Redirect, useHistory } from 'react-router-dom'
 import Navibar from './Navibar.js'
-
+//import Paypal from './PaypalButton.js'
 export default class Home extends Component {
   constructor(props) {
     super(props);
