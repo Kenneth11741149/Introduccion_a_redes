@@ -10,7 +10,9 @@ export default class Counter extends React.Component {
         super();
         this.state = { time: {}, seconds: 1200, showing: false };
         this.time = "";
-        this.pago = ''
+        this.pago = '';
+        this.today = new Date();
+        this.timeDeEntrada = this.today.getHours() + ":" + this.today.getMinutes() + ":" + this.today.getSeconds();
 
         this.timer = 0;
         this.startTimer = this.startTimer.bind(this);
@@ -98,16 +100,61 @@ export default class Counter extends React.Component {
         } else if (hourDiff >= 240) {
             pago = 'Lps. 45.00';
 
-        }else{
+        } else {
             pago = 'Lps. XX.00';
         }
 
         console.log(hourDiff)
         console.log(pago)
-        this.pago =pago
+        this.pago = pago
         return pago;
     }
 
+
+
+    Pago2() {
+        console.log("-------------------------------------------")
+        const data = this.context;
+        var HE = data.state.entrada
+        console.log(HE)
+        console.log(this.timeDeEntrada)
+        var timeStart = new Date("01/01/2007 " + HE)
+        //var timeStart = HE
+        var timeEnd = new Date("01/01/2007 " + this.timeDeEntrada)
+
+        var diffInMilliseconds = Math.abs(timeStart - timeEnd);
+        console.log(diffInMilliseconds); //86400000
+        var minutes = Math.floor(diffInMilliseconds / 60000)
+        //var minutes = Math.floor(diffInMilliseconds / 60) % 60;
+        //diffInMilliseconds -= minutes * 60;
+        console.log("Minutos: ", minutes);
+
+
+        var hourDiff = minutes;  //timeEnd - timeStart; 
+        console.log(hourDiff >= 240)
+        var pago = ''
+        if (hourDiff < 15) {
+            pago = 'Gratis';
+        } else if (hourDiff >= 15 && hourDiff < 120) {
+            pago = 'Lps. 25.00';
+
+        } else if (hourDiff >= 120 && hourDiff < 240) {
+            pago = 'Lps. 35.00';
+
+        } else if (hourDiff >= 240) {
+            pago = 'Lps. 45.00';
+
+        } else {
+            pago = 'Lps. XX.00';
+        }
+
+        console.log(hourDiff)
+        console.log(pago)
+        this.pago = pago
+        return pago;
+
+
+    }
     render() {
         const { showing } = this.state;
         var dat = this;
@@ -116,7 +163,7 @@ export default class Counter extends React.Component {
             <div className="row">
 
 
-                <div className="col-sm-7">
+                <div className="col-sm-6">
                     <Form>
                         <Form.Group as={Row} className="mb-3" controlId="formTiempoSalida">
                             <Form.Label column sm="6">
@@ -129,33 +176,37 @@ export default class Counter extends React.Component {
                         <Form.Group as={Row} className="mb-3" controlId="formTiempoEntrada">
                             <Form.Label column sm="6">
                                 <div >
-                                    {showing
+                                    {/* {showing
                                         ? <div><b>Tiempo de Salida: </b> &nbsp; &nbsp;
-                                             &nbsp; &nbsp;
-                                            </div>
+                                            &nbsp; &nbsp;
+                                        </div>
                                         : null
                                     }
+*/ }
+
+                                    <div><b>Tiempo de Salida: </b> &nbsp; &nbsp;
+                                        &nbsp; &nbsp;
+                                    </div>
+
 
                                 </div>
                             </Form.Label>
                             <Col sm="6">
-                                <Form.Control plaintext readOnly defaultValue={this.time} />
+                                <Form.Control plaintext readOnly defaultValue={this.timeDeEntrada} />
                             </Col>
                         </Form.Group>
                         <Form.Group as={Row} className="mb-3" controlId="formTiempoEntrada">
                             <Form.Label column sm="6">
                                 <div >
-                                    {showing
-                                        ? <div>
-                                            <b>Total a Pagar:</b> &nbsp; &nbsp;
-                                            </div>
-                                        : null
-                                    }
+                                    <div>
+                                        <b>Total a Pagar:</b> &nbsp; &nbsp;
+                                    </div>
+
 
                                 </div>
                             </Form.Label>
                             <Col sm="6">
-                                <Form.Control plaintext readOnly defaultValue={this.Pago(HE)} />
+                                <Form.Control plaintext readOnly value={this.Pago2()} />
                             </Col>
                         </Form.Group>
 
@@ -171,7 +222,7 @@ export default class Counter extends React.Component {
                     <hr width="1" size="165" />
 
                 </div>
-                <div className="col-sm-4">
+                <div className="col-sm-5">
                     <div className="box">
 
                         <h5>Tiempo para salir:</h5>
