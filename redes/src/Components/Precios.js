@@ -81,6 +81,7 @@ export default class Precios extends Component {
                                             </tr>
                                         </tbody>
                                     </Table>
+                                    <hr/> 
                                     <Form>
                                         <Form.Group as={Row} className="mb-3" controlId="formTiempoEntrada">
                                             <Form.Label column sm="2">
