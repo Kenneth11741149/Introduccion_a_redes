@@ -6,7 +6,9 @@ import Paypal from "./PaypalButton"
 export default class Counter extends React.Component {
     constructor() {
         super();
-        this.state = { time: {}, seconds: 1200 };
+        this.state = { time: {}, seconds: 1200, showing: false};
+        this.time = "";
+        
         this.timer = 0;
         this.startTimer = this.startTimer.bind(this);
         this.countDown = this.countDown.bind(this);
@@ -38,6 +40,9 @@ export default class Counter extends React.Component {
         if (this.timer == 0 && this.state.seconds > 0) {
             this.timer = setInterval(this.countDown, 1000);
         }
+        this.setState({showing: !this.showing})
+        var today = new Date();
+        this.time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
     }
 
     countDown() {
@@ -55,9 +60,11 @@ export default class Counter extends React.Component {
     }
 
     render() {
+        const { showing } = this.state;
         return (
             <div>
                 <div className="box">
+                 
                     <h5>Tiempo para salir:</h5>
                 </div>
                 <div className="box"> Min: &nbsp; <b> {this.state.time.m} </b> &nbsp; Seg: &nbsp; <b>{this.state.time.s}</b>
@@ -69,7 +76,16 @@ export default class Counter extends React.Component {
                 <div className="box" style={{marginLeft:'3rem', marginTop:'0.5rem'}}>
                 <Paypal />
                 </div>
-                
+                <div className="box" style={{marginLeft:'3rem', marginTop:'0', height:'0'}}>
+                    { showing 
+                        ? <div><b>Tiempo de Salida: </b> &nbsp; &nbsp; 
+                        {this.time} &nbsp; &nbsp;
+                        <b>Total a Pagar:</b> &nbsp; &nbsp;
+                        0</div>
+                        : null
+                    }
+                    
+                </div>
 
             </div>
         );

@@ -37,7 +37,8 @@ async function getAllTickets() {
         querySnapshot.forEach((doc) => {
 
             const selectedItem = {
-                idTicket: doc.id,
+                
+                num: doc.data().num,
                 entrada: doc.data().entrada
             };
             response.push(selectedItem);

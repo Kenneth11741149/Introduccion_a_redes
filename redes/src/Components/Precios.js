@@ -8,12 +8,16 @@ import Counter from './Counter.js'
 export default class Precios extends Component {
     constructor(props) {
         super(props);
+        console.log(props)
+        //var temp = this.props.state.entrada;
         this.state = {
-            redirect: null
-        };
+            redirect: null,
+            entrada : "01"
+          };
     }
 
     render() {
+        
         var dat = this;
 
         function ContinueButton() {
@@ -86,30 +90,31 @@ export default class Precios extends Component {
                                     <div class="row">
                                         <div class="col-sm-7">
                                             <Form>
-                                                <Form.Group as={Row} className="mb-3" controlId="formTiempoEntrada">
+                                            <Form.Group as={Row} className="mb-3" controlId="formTiempoEntrada">
                                                     <Form.Label column sm="6">
-                                                        <b>Tiempo de Entrada: </b>
+                                                        <b></b>
                                                     </Form.Label>
                                                     <Col sm="6">
-                                                        <Form.Control plaintext readOnly defaultValue="Code here" />
+                                                        <Form.Control plaintext readOnly defaultValue="" />
+                                                    </Col>
+                                                </Form.Group>
+                                                <Form.Group as={Row} className="mb-3" controlId="formTiempoEntrada">
+                                                    <Form.Label column sm="6">
+                                                        <b></b>
+                                                    </Form.Label>
+                                                    <Col sm="6">
+                                                        <Form.Control plaintext readOnly defaultValue="" />
                                                     </Col>
                                                 </Form.Group>
                                                 <Form.Group as={Row} className="mb-3" controlId="formTiempoSalida">
                                                     <Form.Label column sm="6">
-                                                        <b> Tiempo de Salida: </b>
+                                                        <b> Tiempo de Entrada: </b>
                                                     </Form.Label>
                                                     <Col sm="6">
-                                                        <Form.Control plaintext readOnly defaultValue="Also code Here" />
+                                                        <Form.Control plaintext readOnly defaultValue={this.state.entrada} />
                                                     </Col>
                                                 </Form.Group>
-                                                <Form.Group as={Row} className="mb-3" controlId="formTotalAPagar">
-                                                    <Form.Label column sm="6">
-                                                        <b>   Total a pagar: </b>
-                                                    </Form.Label>
-                                                    <Col sm="6">
-                                                        <Form.Control plaintext readOnly defaultValue="Dont forget to code here too." />
-                                                    </Col>
-                                                </Form.Group>
+                                                
                                             </Form>
                                             
                                             {/* <Button variant="primary" onClick={ContinueButton}>Continuar</Button>{''}  */}
