@@ -31,20 +31,31 @@ export default class Home extends Component {
       return <Redirect to={this.state.redirect} />
     }
     return (
-      <div>
+      <div >
+
+
         <Navibar />
-        <Form>
-          <Form.Group className="mb-3" controlId="formParkingCode">
-            <Form.Label>Codigo de Ticket</Form.Label>
-            <Form.Control type="CodigoDeTicket" placeholder="Ingrese codigo de ticket:" />
-            <Form.Text className="text-muted">
-            </Form.Text>
-          </Form.Group>
-          <Button variant="primary" onClick={ContinueButton}>Continuar</Button>{''}
-        </Form>
+        <div className="Page">
+        <div className="PageLayout">
+          <div class="row">
+            <div class="col-sm-5">
+
+              <div className="Content">
+                <Form>
+                  <Form.Group className="mb-3" controlId="formParkingCode">
+                    <Form.Label><h5> Codigo de Ticket </h5></Form.Label>
+                    <Form.Control type="CodigoDeTicket" placeholder="Ingrese codigo de ticket:" />
+                    <Form.Text className="text-muted">
+                    </Form.Text>
+                  </Form.Group>
+                  <Button variant="primary" onClick={ContinueButton}>Continuar</Button>{''}
+                </Form>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
       </div>
-
-
     )
   }
 }

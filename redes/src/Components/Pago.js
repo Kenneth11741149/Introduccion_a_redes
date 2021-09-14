@@ -5,11 +5,21 @@ export default class Pago extends Component {
     render() {
         return (
             <div>
-                <Navibar/>
-                Dont forget to put the payment amount. <p/>
-                Dont forget to put the exit time. <p/>
-                Dont forget to code success and fail functions on Paypal button.<p/>
-                <Paypal/>
+                <Navibar />
+                <div className="Page">
+                    <div className="PageLayout">
+                        <div class="row">
+                            <div class="col-sm-9">
+                                <div className="Content">
+                                    Dont forget to put the payment amount. <p />
+                                    Dont forget to put the exit time. <p />
+                                    Dont forget to code success and fail functions on Paypal button.<p />
+                                    <Paypal />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         )
     }

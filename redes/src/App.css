@@ -36,3 +36,38 @@
     transform: rotate(360deg);
   }
 }
+
+
+.Page{
+  background-color: gray;
+  height: 91.5vh;
+
+}
+.PageLayout{
+  background-color: white;
+  margin-left: 3rem;  
+  margin-right: 3rem;
+  height: 91.5vh;
+
+}
+
+.Content{
+  margin-top: 2rem; 
+  margin-left: 3rem;  
+  margin-right: 3rem;
+  margin-bottom: 1rem;
+}
+
+.Nav{
+  margin-top: 1rem; 
+  margin-left: 3rem;  
+  margin-right: 3rem;
+  margin-bottom: 1rem;
+}
+.Content-Pago{
+  margin-top: 1rem; 
+  margin-left: 10rem;  
+  margin-right: 10rem;
+  margin-bottom: 1rem;
+}
+

@@ -6,8 +6,8 @@ export default class navbar extends Component {
     render() {
         return (
             
-            <Navbar bg="light" expand="lg">
-                
+            <Navbar bg="dark" variant="dark" expand="lg">
+                 <div className="Nav">
                     <Navbar.Brand as={Link} to="/">Sistema de Parqueo</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     {/* <Navbar.Collapse id="basic-navbar-nav">
@@ -16,7 +16,7 @@ export default class navbar extends Component {
                             <Nav.Link href="#link">Pago</Nav.Link>
                         </Nav>
                     </Navbar.Collapse> */}
-                
+                </div>
             </Navbar>
         )
     }
