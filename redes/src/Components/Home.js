@@ -3,6 +3,9 @@ import React, { Component, useEffect, useState } from 'react';
 import { Navbar, Container, Nav, NavDropdown, Button, Form } from 'react-bootstrap';
 import { Link, Redirect, useHistory } from 'react-router-dom'
 import Navibar from './Navibar.js'
+
+import functions from './function.js';
+
 //import Paypal from './PaypalButton.js'
 export default class Home extends Component {
   constructor(props) {
@@ -10,9 +13,17 @@ export default class Home extends Component {
     this.state = {
       redirect: null
     };
+
+    
   }
+  
   render() {
     var dat = this;
+
+    functions.getAllTickets().then(function (result) {
+      console.log(result)
+  })
+
 
     function ContinueButton() {
       alert("El boton continuar ha sido clickeado.")
