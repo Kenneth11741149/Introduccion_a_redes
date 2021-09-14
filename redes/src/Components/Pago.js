@@ -14,7 +14,7 @@ export default class Pago extends Component {
                                     Dont forget to put the payment amount. <p />
                                     Dont forget to put the exit time. <p />
                                     Dont forget to code success and fail functions on Paypal button.<p />
-                                    <Paypal />
+                                   
                                 </div>
                             </div>
                         </div>

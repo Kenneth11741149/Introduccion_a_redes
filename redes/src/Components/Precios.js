@@ -2,8 +2,8 @@ import React, { Component, useState, useEffect } from 'react';
 import { Container, Table, Form, Row, Col, Button } from 'react-bootstrap';
 import { Link, Redirect, useHistory } from 'react-router-dom'
 import Navibar from './Navibar.js'
-
-
+import Paypal from "./PaypalButton"
+import Counter from './Counter.js'
 
 export default class Precios extends Component {
     constructor(props) {
@@ -38,7 +38,7 @@ export default class Precios extends Component {
                 <div className="Page">
                     <div className="PageLayout">
                         <div class="row">
-                            <div class="col-sm-9">
+                            <div class="col-sm-10">
                                 <div className="Content">
                                     <Table striped bordered hover>
                                         <thead>
@@ -81,34 +81,54 @@ export default class Precios extends Component {
                                             </tr>
                                         </tbody>
                                     </Table>
-                                    <hr/> 
-                                    <Form>
-                                        <Form.Group as={Row} className="mb-3" controlId="formTiempoEntrada">
-                                            <Form.Label column sm="2">
-                                                <b>Tiempo de Entrada: </b>
-                                            </Form.Label>
-                                            <Col sm="10">
-                                                <Form.Control plaintext readOnly defaultValue="Code here" />
-                                            </Col>
-                                        </Form.Group>
-                                        <Form.Group as={Row} className="mb-3" controlId="formTiempoSalida">
-                                            <Form.Label column sm="2">
-                                                <b> Tiempo de Salida: </b>
-                                            </Form.Label>
-                                            <Col sm="10">
-                                                <Form.Control plaintext readOnly defaultValue="Also code Here" />
-                                            </Col>
-                                        </Form.Group>
-                                        <Form.Group as={Row} className="mb-3" controlId="formTotalAPagar">
-                                            <Form.Label column sm="2">
-                                                <b>   Total a pagar: </b>
-                                            </Form.Label>
-                                            <Col sm="10">
-                                                <Form.Control plaintext readOnly defaultValue="Dont forget to code here too." />
-                                            </Col>
-                                        </Form.Group>
-                                    </Form>
-                                    <Button variant="primary" onClick={ContinueButton}>Continuar</Button>{''}
+                                    <hr />
+
+                                    <div class="row">
+                                        <div class="col-sm-7">
+                                            <Form>
+                                                <Form.Group as={Row} className="mb-3" controlId="formTiempoEntrada">
+                                                    <Form.Label column sm="6">
+                                                        <b>Tiempo de Entrada: </b>
+                                                    </Form.Label>
+                                                    <Col sm="6">
+                                                        <Form.Control plaintext readOnly defaultValue="Code here" />
+                                                    </Col>
+                                                </Form.Group>
+                                                <Form.Group as={Row} className="mb-3" controlId="formTiempoSalida">
+                                                    <Form.Label column sm="6">
+                                                        <b> Tiempo de Salida: </b>
+                                                    </Form.Label>
+                                                    <Col sm="6">
+                                                        <Form.Control plaintext readOnly defaultValue="Also code Here" />
+                                                    </Col>
+                                                </Form.Group>
+                                                <Form.Group as={Row} className="mb-3" controlId="formTotalAPagar">
+                                                    <Form.Label column sm="6">
+                                                        <b>   Total a pagar: </b>
+                                                    </Form.Label>
+                                                    <Col sm="6">
+                                                        <Form.Control plaintext readOnly defaultValue="Dont forget to code here too." />
+                                                    </Col>
+                                                </Form.Group>
+                                            </Form>
+                                            
+                                            {/* <Button variant="primary" onClick={ContinueButton}>Continuar</Button>{''}  */}
+                                            <div style={{ marginTop: '1rem' }}>
+                                          
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-1">
+                                        <hr width="1" size="165"/> 
+                                           
+                                        </div>
+                                        <div class="col-sm-4">
+                                        <br/>
+                                        <br/>
+                                           <Counter/>
+            
+                                        </div>
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
