@@ -4,6 +4,7 @@ import { Switch, Route, Link } from 'react-router-dom';
 import Paypal from "./PaypalButton"
 import Context from '../Context.js';
 
+const useMountEffect = (fun) => React.useEffect(fun, []);
 export default class Counter extends React.Component {
     static contextType = Context;
     constructor() {
@@ -18,6 +19,8 @@ export default class Counter extends React.Component {
         this.startTimer = this.startTimer.bind(this);
         this.countDown = this.countDown.bind(this);
     }
+
+    
 
     secondsToTime(secs) {
         let hours = Math.floor(secs / (60 * 60));
@@ -39,6 +42,9 @@ export default class Counter extends React.Component {
     componentDidMount() {
         let timeLeftVar = this.secondsToTime(this.state.seconds);
         this.setState({ time: timeLeftVar });
+        this.today = new Date();
+        this.timeDeEntrada = this.today.getHours() + ":" + this.today.getMinutes() + ":" + this.today.getSeconds();
+        this.Pago2();
     }
 
     startTimer() {
@@ -74,7 +80,11 @@ export default class Counter extends React.Component {
     }
 
     
-
+    inicializar(){
+        this.today = new Date();
+        this.timeDeEntrada = this.today.getHours() + ":" + this.today.getMinutes() + ":" + this.today.getSeconds();
+        this.Pago2();
+    }
 
 
     Pago2() {
@@ -126,10 +136,12 @@ export default class Counter extends React.Component {
         this.today = new Date();
         this.timeDeEntrada = this.today.getHours() + ":" + this.today.getMinutes() + ":" + this.today.getSeconds();
       }*/
+
     render() {
         const { showing } = this.state;
         var dat = this;
         var HE = dat.getEntrada();
+        
         return (
             <div className="row">
 
