@@ -19,6 +19,11 @@ export default class Home extends Component {
 
   }
 
+  setId_code(code) {
+    const data = this.context;
+    data.setId_code(code);
+    console.log(code)
+  }
   setTicket_Code(code) {
     const data = this.context;
     data.setTicket_Code(code);
@@ -50,10 +55,10 @@ export default class Home extends Component {
 
 
     //Ejemplo UPDATE
-    functions.updateTicket( '4Q1naY4UzSh6xB8r6NiG','YA PAGO','18:55:60').then(function (result) {
+    /*functions.updateTicket( '4Q1naY4UzSh6xB8r6NiG','YA PAGO','18:55:60').then(function (result) {
       console.log(result)
       console.log("LLAMANDO UPDATE")
-    })
+    })*/
    //////
 
     function ContinueButton() {
@@ -66,6 +71,7 @@ export default class Home extends Component {
           codeIsValid = true;
           dat.setTicket_Code(dat.state.num);
           dat.setEntrada(current);
+          dat.setId_code(tickets[i].id);
           break;
         }
       }

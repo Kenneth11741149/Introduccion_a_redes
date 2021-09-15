@@ -1,13 +1,25 @@
 import React from 'react';
 import PaypalExpressBtn from 'react-paypal-express-checkout';
- 
+import Context from '../Context.js';
+import functions from './function.js';
+
 export default class MyApp extends React.Component {
+    static contextType = Context;
+    
+    getPaypalAmount() {
+        const data = this.context;
+        return data.state.paypal;
+    }
+    getId_code() {
+        const data = this.context;
+        return data.state.id_code;
+    }
     render() {
         const onSuccess = (payment) => {
-            // Congratulation, it came here means everything's fine!
-                    
-
-            		// You can bind the "payment" object's value to your state or props or whatever here, please see below for sample returned data
+            functions.updateTicket( this.getId_code(),'YA PAGO','18:55:60').then(function (result) {
+                console.log(result)
+                console.log("LLAMANDO UPDATE")
+              })
         }
  
         const onCancel = (data) => {
@@ -43,7 +55,7 @@ export default class MyApp extends React.Component {
             <PaypalExpressBtn env={env}
              client={client}
               currency={currency} 
-              total={1} 
+              total={this.getPaypalAmount()} 
               onError={onError} 
               onSuccess={onSuccess} 
               onCancel={onCancel} />

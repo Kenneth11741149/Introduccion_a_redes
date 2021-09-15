@@ -10,14 +10,24 @@ class AuthUserProvider extends Component {
         displayName: null,
         SignUpVisible: false,
         LogInVisible: false,
-        ChangeVisible: false
+        ChangeVisible: false,
+        paypal: "0",
+        id_code: "0"
     }
     setTicket_Code = (code) =>{
         this.setState({Ticket_Code: code});
         
     }
+    setId_code = (code) =>{
+        this.setState({id_code: code});
+        
+    }
     setEntrada = (code) =>{
         this.setState({entrada: code});
+        
+    }
+    setCantidaPaypal = (code) =>{
+        this.setState({paypal: code});
         
     }
 
@@ -52,7 +62,9 @@ class AuthUserProvider extends Component {
                 ToggleLogInModal: this.ToggleLogInModal, 
                 ToggleChangeModal: this.ToggleChangeModal,
                 setTicket_Code : this.setTicket_Code,
+                setCantidaPaypal: this.setCantidaPaypal,
                 setEntrada : this.setEntrada,
+                setId_code : this.setId_code,
                 ModalsToFalse: this.ModalsToFalse
             }}>
                 {this.props.children}

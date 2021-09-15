@@ -25,7 +25,7 @@ export default class Precios extends Component {
         const data = this.context;
         return data.state.entrada
     }
-
+    
     render() {
         
         var dat = this;

@@ -45,6 +45,7 @@ export default class Counter extends React.Component {
         this.today = new Date();
         this.timeDeEntrada = this.today.getHours() + ":" + this.today.getMinutes() + ":" + this.today.getSeconds();
         this.Pago2();
+        
     }
 
     startTimer() {
@@ -64,7 +65,10 @@ export default class Counter extends React.Component {
         const data = this.context;
         return data.state.entrada
     }
-
+    setCantidaPaypal(code) {
+        const data = this.context;
+        data.setCantidaPaypal(code);
+      }
     countDown() {
         // Remove one second, set state so a re-render happens.
         let seconds = this.state.seconds - 1;
@@ -126,7 +130,7 @@ export default class Counter extends React.Component {
         console.log(hourDiff)
         console.log(pago)
         this.pago = pago
-        
+        this.setCantidaPaypal(pago);
         return pago;
 
 
