@@ -112,25 +112,29 @@ export default class Counter extends React.Component {
         var hourDiff = minutes;  //timeEnd - timeStart; 
         console.log(hourDiff >= 240)
         var pago = ''
+        var pagoentero = 1;
         if (hourDiff < 15) {
             pago = 'Gratis';
         } else if (hourDiff >= 15 && hourDiff < 120) {
             pago = 'Lps. 25.00';
+            pagoentero = 25;
 
         } else if (hourDiff >= 120 && hourDiff < 240) {
             pago = 'Lps. 35.00';
+            pagoentero = 35;
 
         } else if (hourDiff >= 240) {
             pago = 'Lps. 45.00';
-
+            pagoentero = 45;
         } else {
             pago = 'Lps. XX.00';
+            pagoentero = 2;
         }
 
         console.log(hourDiff)
         console.log(pago)
         this.pago = pago
-        this.setCantidaPaypal(pago);
+        this.setCantidaPaypal(pagoentero);
         return pago;
 
 

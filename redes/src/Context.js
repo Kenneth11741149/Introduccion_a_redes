@@ -11,7 +11,7 @@ class AuthUserProvider extends Component {
         SignUpVisible: false,
         LogInVisible: false,
         ChangeVisible: false,
-        paypal: "0",
+        paypal: "2",
         id_code: "0"
     }
     setTicket_Code = (code) =>{
