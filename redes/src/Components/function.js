@@ -40,8 +40,8 @@ async function getAllTickets() {
                 
                 num: doc.data().num,
                 entrada: doc.data().entrada,
-                estado: doc.data.estado,
-                horaPago: doc.data.horaPago
+                estado: doc.data().estado,
+                horaPago: doc.data().horaPago
             };
             response.push(selectedItem);
           //console.log(`${doc.id} => ${doc.data()}`);

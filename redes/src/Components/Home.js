@@ -44,6 +44,8 @@ export default class Home extends Component {
     var current;
     functions.getAllTickets().then(function (result) {
       tickets = result;
+
+      console.log(tickets)
     })
 
 
