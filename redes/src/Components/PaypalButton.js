@@ -8,11 +8,12 @@ export default class MyApp extends React.Component {
     constructor(props) {
         super(props);
         this.amount = 69;
+        this.today = new Date();
+        this.timeDeEntrada = this.today.getHours() + ":" + this.today.getMinutes() + ":" + this.today.getSeconds();
     }
     getPaypalAmount() {
         const data = this.context;
         var cobro = data.state.paypal;
-        alert("Se recibio el monto a cobrar: "+cobro);
         this.amount = cobro;
     }
     getId_code() {
@@ -25,8 +26,9 @@ export default class MyApp extends React.Component {
     
     render() {
         var dat = this;
+        dat.getPaypalAmount() 
         const onSuccess = (payment) => {
-            functions.updateTicket(this.getId_code(), 'YA PAGO', '18:55:60').then(function (result) {
+            functions.updateTicket(this.getId_code(), 'YA PAGO', this.timeDeEntrada).then(function (result) {
                 console.log(result)
                 console.log("LLAMANDO UPDATE")
             })

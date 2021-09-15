@@ -14,7 +14,7 @@ export default class Counter extends React.Component {
         this.pago = '';
         this.today = "";
         this.timeDeEntrada = "";
-        
+        this.pagoentero = 1;
         this.timer = 0;
         this.startTimer = this.startTimer.bind(this);
         this.countDown = this.countDown.bind(this);
@@ -65,9 +65,9 @@ export default class Counter extends React.Component {
         const data = this.context;
         return data.state.entrada
     }
-    setCantidaPaypal(code) {
+    setCantidaPaypal() {
         const data = this.context;
-        data.setCantidaPaypal(code);
+        data.setCantidaPaypal(this.state.pagoentero);
       }
     countDown() {
         // Remove one second, set state so a re-render happens.
@@ -83,6 +83,12 @@ export default class Counter extends React.Component {
         }
     }
 
+    setPagoEntero(pago){
+        this.setState({ pagoentero: pago },() => {
+            console.log('PAGO',this.state.pagoentero)
+            this.setCantidaPaypal();
+        })
+    }
     
     inicializar(){
         this.today = new Date();
@@ -92,11 +98,14 @@ export default class Counter extends React.Component {
 
 
     Pago2() {
-        console.log("-------------------------------------------")
+        //console.log("-------------------------------------------1")
         const data = this.context;
         var HE = data.state.entrada
-        console.log(HE)
-        console.log(this.timeDeEntrada)
+        
+        //console.log(HE)
+        //console.log(this.timeDeEntrada)
+
+
         var timeStart = new Date("01/01/2007 " + HE)
         //var timeStart = HE
         var timeEnd = new Date("01/01/2007 " + this.timeDeEntrada)
@@ -109,7 +118,7 @@ export default class Counter extends React.Component {
         console.log("Minutos: ", minutes);
 
 
-        var hourDiff = minutes;  //timeEnd - timeStart; 
+        var hourDiff = minutes;  //timeEnd - tim0eStart; 
         console.log(hourDiff >= 240)
         var pago = ''
         var pagoentero = 1;
@@ -130,11 +139,13 @@ export default class Counter extends React.Component {
             pago = 'Lps. XX.00';
             pagoentero = 2;
         }
-
+        console.log("###")
         console.log(hourDiff)
-        console.log(pago)
+       // console.log(pago)
         this.pago = pago
-        this.setCantidaPaypal(pagoentero);
+        //console.log(0)
+        this.pagoentero = pagoentero
+        this.setPagoEntero(pagoentero)
         return pago;
 
 
