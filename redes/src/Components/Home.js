@@ -47,6 +47,13 @@ export default class Home extends Component {
     })
 
 
+    //Ejemplo UPDATE
+    functions.updateTicket( '4Q1naY4UzSh6xB8r6NiG','YA PAGO','18:55:60').then(function (result) {
+      console.log(result)
+      console.log("LLAMANDO UPDATE")
+    })
+   //////
+
     function ContinueButton() {
 
       var codeIsValid = false;
